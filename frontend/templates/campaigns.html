@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaigns — campaign portal</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="app-header" id="shell-header"></header>
+<main>
+  <div class="error-box" id="page-error"></div>
+  <h2>Campaigns</h2>
+  <p class="section-note" id="role-note">Loading…</p>
+  <div class="table-wrap" id="table"><div class="empty">Loading…</div></div>
+</main>
+
+<!-- Confirm send -->
+<div class="modal-back" id="confirm-back">
+  <div class="modal">
+    <h3 id="confirm-title">Send campaign</h3>
+    <div class="error-box" id="confirm-error"></div>
+    <div id="confirm-body">
+      <div class="big-count" id="confirm-count">—</div>
+      <p class="basis" id="confirm-basis"></p>
+      <div class="sample" id="confirm-sample"></div>
+      <p class="basis">This sends real messages. It can't be undone.</p>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-sm ghost" id="confirm-cancel">Cancel</button>
+      <button class="btn-sm" id="confirm-go">Send to <span id="confirm-go-count"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Send results -->
+<div class="modal-back" id="result-back">
+  <div class="modal">
+    <h3 id="result-title">Send results</h3>
+    <div class="error-box" id="result-error"></div>
+    <div id="result-body"></div>
+    <div class="modal-actions" style="margin-top:18px">
+      <button class="btn-sm ghost" id="result-close">Close</button>
+      <button class="btn-sm" id="result-refresh">Refresh from provider</button>
+    </div>
+  </div>
+</div>
+
+<!-- Share -->
+<div class="modal-back" id="share-back">
+  <div class="modal">
+    <h3>Publish results</h3>
+    <p class="basis">Creates a link showing only this campaign's results. Anyone with the link and password can open it.</p>
+    <div class="error-box" id="share-error"></div>
+    <div id="share-form">
+      <label for="share-pw">Password (8 characters or more)</label>
+      <input type="password" id="share-pw" autocomplete="new-password">
+    </div>
+    <div id="share-done" style="display:none">
+      <div class="share-url" id="share-url"></div>
+      <p class="basis">Save the password now — it isn't stored in readable form and can't be shown again.</p>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-sm ghost" id="share-cancel">Close</button>
+      <button class="btn-sm" id="share-go">Create link</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+  window.SUPABASE_URL = "{{ supabase_url }}";
+  window.SUPABASE_ANON_KEY = "{{ supabase_anon_key }}";
+</script>
+<script src="/static/js/shell.js"></script>
+<script src="/static/js/campaigns.js"></script>
+</body>
+</html>

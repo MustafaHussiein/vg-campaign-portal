@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Velocity Growth campaign portal</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="split">
+
+  <div class="rail">
+    <div class="rail-mark">Velocity <span>Growth</span></div>
+
+    <div class="route">
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" aria-label="Three client brands on one network">
+        <path class="route-line" d="M40 60 H 320" />
+        <circle class="route-node" cx="40" cy="60" r="7" />
+        <circle class="route-node" cx="180" cy="60" r="7" />
+        <circle class="route-node" cx="320" cy="60" r="7" />
+        <text class="route-label" x="40" y="88" text-anchor="middle">KIL</text>
+        <text class="route-label" x="180" y="88" text-anchor="middle">KAR</text>
+        <text class="route-label" x="320" y="88" text-anchor="middle">MAR</text>
+      </svg>
+    </div>
+
+    <p class="rail-caption">Three brands, three sets of books. You only ever see your own.</p>
+  </div>
+
+  <div class="form-side">
+    <div class="form-panel">
+      <h1>Sign in</h1>
+      <p class="sub">Use your work email, or continue with Google.</p>
+
+      <div class="error-box" id="error"></div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" autocomplete="email" autofocus>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" autocomplete="current-password">
+
+      <button class="btn-primary" id="signin">Sign in</button>
+
+      <div class="divider">or</div>
+
+      <button class="btn-google" id="google">
+        <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.2-.4-4.7H24v8.9h11.8c-.5 2.7-2 5-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.3z"/>
+          <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.2l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.3 15.5 46 24 46z"/>
+          <path fill="#FBBC05" d="M11.8 28.4c-.4-1.3-.7-2.7-.7-4.4s.3-3 .7-4.4v-5.7H4.5C2.9 17.1 2 20.4 2 24s.9 6.9 2.5 10.1l7.3-5.7z"/>
+          <path fill="#EA4335" d="M24 10.4c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 3.9 29.9 2 24 2 15.5 2 8.1 6.7 4.5 13.9l7.3 5.7c1.7-5.2 6.5-9.2 12.2-9.2z"/>
+        </svg>
+        Continue with Google
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+  window.SUPABASE_URL = "{{ supabase_url }}";
+  window.SUPABASE_ANON_KEY = "{{ supabase_anon_key }}";
+</script>
+<script src="/static/js/auth.js"></script>
+</body>
+</html>

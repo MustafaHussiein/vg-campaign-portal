@@ -1,0 +1,7 @@
+external_id;campaign_name;channel;target_country;reported_sent;reported_delivered;reported_bounced;reported_opens;reported_clicks;spend;sent_at_utc;send_local_time;parent_campaign_id
+MAR-0001;Campagne 1;sms;;282;267;15;93;42;221,09;2026-03-21T21:37:05Z;2026-03-21 22:37;
+MAR-0002;Campagne 2;sms;;772;733;39;268;42;173,47;2026-04-08T17:23:20Z;2026-04-08 18:23;
+MAR-0003;Campagne 3;sms;;629;597;32;188;183;273,09;2026-03-18T11:52:02Z;2026-03-18 12:52;
+MAR-0004;Campagne 4;sms;;260;247;13;108;194;389,48;2026-02-17T21:59:47Z;2026-02-17 22:59;
+MAR-0005;Campagne 5;sms;;442;419;23;92;65;322,95;2026-03-11T09:13:55Z;2026-03-11 10:13;
+MAR-0006;Campagne 6;email;;526;499;27;129;186;61,81;2026-04-08T03:06:28Z;2026-04-08 04:06;

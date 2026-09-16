@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaign results</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="split">
+  <div class="rail">
+    <div class="rail-mark">Velocity <span>Growth</span></div>
+    <div class="route">
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="route-line" d="M40 60 H 320" />
+        <circle class="route-node" cx="180" cy="60" r="7" />
+      </svg>
+    </div>
+    <p class="rail-caption">Shared campaign results.</p>
+  </div>
+
+  <div class="form-side">
+    <div class="form-panel">
+      <div id="gate">
+        <h1>Campaign results</h1>
+        <p class="sub">Enter the password you were sent.</p>
+        <div class="error-box" id="error"></div>
+        <label for="pw">Password</label>
+        <input type="password" id="pw" autocomplete="off" autofocus>
+        <button class="btn-primary" id="open">View results</button>
+      </div>
+
+      <div id="results" style="display:none">
+        <h1 id="camp-name">—</h1>
+        <p class="sub" id="camp-meta"></p>
+        <div id="numbers"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>window.SHARE_TOKEN = "{{ token }}";</script>
+<script src="/static/js/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — campaign portal</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="app-header" id="shell-header"></header>
+<main>
+  <div class="error-box" id="page-error"></div>
+  <h2>Overview</h2>
+  <p class="section-note">Everything below is your brand only.</p>
+
+  <div id="quality"></div>
+
+  <div class="stat-row" id="stats"><span class="muted">Loading…</span></div>
+
+  <h2>Signups, last 30 days</h2>
+  <p class="section-note">Counted by signup date, excluding deleted customers.</p>
+  <div class="chart" id="chart"><span class="muted">Loading…</span></div>
+
+  <h2>Campaign performance</h2>
+  <p class="section-note">
+    Two columns per metric. <strong>Reported</strong> is what the provider stated at send time.
+    <strong>Observed</strong> is counted from the raw engagement log. They disagree in this data,
+    so both are shown rather than picking one.
+  </p>
+  <div class="table-wrap" id="perf"><div class="empty">Loading…</div></div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+  window.SUPABASE_URL = "{{ supabase_url }}";
+  window.SUPABASE_ANON_KEY = "{{ supabase_anon_key }}";
+</script>
+<script src="/static/js/shell.js"></script>
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

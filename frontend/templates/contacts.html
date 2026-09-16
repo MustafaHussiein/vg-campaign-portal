@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacts — campaign portal</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="app-header" id="shell-header"></header>
+<main>
+  <div class="error-box" id="page-error"></div>
+  <h2>Contacts</h2>
+  <p class="section-note" id="count-note">Loading…</p>
+
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search name, email or ID">
+    <button class="btn-sm ghost" id="prev" disabled>Previous</button>
+    <button class="btn-sm ghost" id="next" disabled>Next</button>
+    <span class="muted" id="page-info"></span>
+  </div>
+
+  <div class="table-wrap" id="table"><div class="empty">Loading…</div></div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+  window.SUPABASE_URL = "{{ supabase_url }}";
+  window.SUPABASE_ANON_KEY = "{{ supabase_anon_key }}";
+</script>
+<script src="/static/js/shell.js"></script>
+<script src="/static/js/contacts.js"></script>
+</body>
+</html>
