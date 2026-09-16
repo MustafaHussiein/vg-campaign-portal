@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
@@ -42,6 +42,21 @@ admin = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+
+
+# TEMPORARY — remove before final submission. Surfaces the real
+# exception in the response body so it's visible in the browser's
+# Network tab without needing Render's log viewer. Still logs to
+# stdout too, so Render logs also show it.
+@app.exception_handler(Exception)
+async def debug_exception_handler(request: Request, exc: Exception):
+    import traceback
+    tb = traceback.format_exc()
+    print(tb, flush=True)
+    return JSONResponse(status_code=500, content={
+        "detail": f"{type(exc).__name__}: {exc}",
+        "trace_tail": tb[-2000:],
+    })
 
 
 # ----------------------------------------------------------------
