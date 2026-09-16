@@ -18,8 +18,23 @@ function clearError() {
 // succeeding is not the same as belonging to a brand, so check before
 // sending anyone to the dashboard.
 async function hasProfile() {
-  const { data, error } = await sb.from("profiles").select("brand_id").maybeSingle();
-  if (error) return false;
+  const {
+    data: { user },
+  } = await sb.auth.getUser();
+
+  if (!user) return false;
+
+  const { data, error } = await sb
+    .from("profiles")
+    .select("brand_id")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Profile lookup failed:", error);
+    return false;
+  }
+
   return Boolean(data);
 }
 
