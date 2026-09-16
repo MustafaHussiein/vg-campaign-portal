@@ -172,7 +172,7 @@ async def dashboard(caller: Caller = Depends(current_user)):
     now_iso = datetime.now(timezone.utc).isoformat()
 
     def count_contacts(apply):
-        q = (admin.table("contacts").select("id", count="exact", head=True)
+        q = (admin.table("contacts").select("id", count="exact").limit(1)
              .eq("brand_id", caller.brand_id).is_("deleted_at", "null"))
         return apply(q).execute().count
 
@@ -234,7 +234,7 @@ async def campaign_performance(caller: Caller = Depends(current_user)):
     for c in camps.data:
         obs = {}
         for et in ("bounce", "open", "click", "unsubscribe"):
-            r = (admin.table("historical_events").select("id", count="exact", head=True)
+            r = (admin.table("historical_events").select("id", count="exact").limit(1)
                  .eq("campaign_id", c["id"]).eq("brand_id", caller.brand_id)
                  .eq("event_type", et).execute())
             obs[et] = r.count
@@ -496,12 +496,12 @@ async def send_status(send_id: str, caller: Caller = Depends(current_user)):
 
     breakdown = {}
     for status in ("queued", "delivered", "opened", "bounced", "unsubscribed"):
-        r = (admin.table("send_recipients").select("id", count="exact", head=True)
+        r = (admin.table("send_recipients").select("id", count="exact").limit(1)
              .eq("campaign_send_id", send_id).eq("brand_id", caller.brand_id)
              .eq("status", status).execute())
         breakdown[status] = r.count
 
-    ev = (admin.table("provider_events").select("id", count="exact", head=True)
+    ev = (admin.table("provider_events").select("id", count="exact").limit(1)
           .eq("campaign_send_id", send_id).eq("brand_id", caller.brand_id).execute())
 
     return {"send": send.data, "breakdown": breakdown, "events_received": ev.count}
