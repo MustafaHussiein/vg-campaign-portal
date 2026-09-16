@@ -17,17 +17,8 @@ function clearError() {
 // most likely via Google, with an email that was never seeded. Auth
 // succeeding is not the same as belonging to a brand, so check before
 // sending anyone to the dashboard.
-// The profiles RLS policy is brand-scoped, so a signed-in user can see
-// every profile in their own brand (owner and analyst both). Ask for
-// this user's row specifically rather than assuming a single result.
 async function hasProfile() {
-  const { data: userData } = await sb.auth.getUser();
-  if (!userData?.user) return false;
-  const { data, error } = await sb
-    .from("profiles")
-    .select("brand_id")
-    .eq("id", userData.user.id)
-    .maybeSingle();
+  const { data, error } = await sb.from("profiles").select("brand_id").maybeSingle();
   if (error) return false;
   return Boolean(data);
 }
